@@ -1,0 +1,37 @@
+{
+    "measurement": "power on",
+    "tags": {
+        "command_id": "01",
+        "command_name": "POWER ON"
+    },
+    "fields": {
+        "raw_payload": "000e7900b30e7f00430e8000360e7b008f0aa700020a9e0000000000000000000000000000000000000000000000000000",
+        "total_packets": "00",
+        "command_id": "01",
+        "current_packet_number": "00",
+        "telemetry_byte_count": "19",
+        "header_fifth_byte": "00",
+        "decoded rtc (y-m-d h:m:s)": "2000-00-00 00:00:00",
+        "header_seventh_byte": 0,
+        "gpio_status": {
+            "pwr_5v_sc": "ON",
+            "pwr_5v_com": "ON",
+            "pwr_5v_spre": "ON",
+            "pwr_3v3_lcm": "ON",
+            "pwr_3v3_cpm": "ON"
+        },
+        "bus_voltage": 4.522705078125,
+        "bus_current": 0.1092529296875,
+        "com_voltage": 4.530029296875,
+        "com_current": 0.0408935546875,
+        "sc_voltage": 4.53125,
+        "sc_current": 0.032958984375,
+        "spre_voltage": 4.525146484375,
+        "spre_current": 0.0872802734375,
+        "lcm_voltage": 3.328857421875,
+        "lcm_current": 0.001220703125,
+        "cpm_voltage": 3.31787109375,
+        "cpm_current": 0.0
+    },
+    "timestamp": "2026-07-13 10:50:18.378"
+}
