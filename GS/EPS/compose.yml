@@ -1,0 +1,33 @@
+services:
+  influxdb:
+    image: influxdb
+    container_name: myinfluxdb  #grafanaからアクセスするための名前
+    volumes:
+      - ./docker/influxdb/data:/var/lib/influxdb
+    ports:
+      - 8086:8086
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=adminadmin # ユーザーネームと一緒は不可
+      - DOCKER_INFLUXDB_INIT_ORG=my-org
+      - DOCKER_INFLUXDB_INIT_BUCKET=my-bucket
+      - DOCKER_INFLUXDB_INIT_RETENTION=0 #無制限
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-super-secret-auth-token
+
+  grafana:
+    image: grafana/grafana-enterprise
+    ports:
+      - 3000:3000 #grafanaのポート
+    user: "$PID:$GID"
+    volumes:
+      - ./docker/grafana:/var/lib/grafana
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SERVER_HTTP_ADDR=0.0.0.0
+      - GF_SERVER_HTTP_PORT=3000
+      - GF_SERVER_ROOT_URL=http://influxdb:8086
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_DASHBOARDS_MIN_REFRESH_INTERVAL=100ms
